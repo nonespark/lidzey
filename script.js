@@ -40,8 +40,6 @@ if (noButton) {
         if (clickCount >= maxClicks) {
             // Butonu gizle
             noButton.style.display = 'none';
-            // İsteğe bağlı uyarı mesajı
-            alert("Artık 'Hayır' butonu kayboldu 😉");
         }
     });
 }
