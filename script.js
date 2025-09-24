@@ -26,3 +26,22 @@ function handleNoClick() {
 function handleYesClick() {
     window.location.href = "yes_page.html";
 }
+// "Hayır" butonunu seç
+const noButton = document.getElementById('no-button');
+
+if (noButton) {
+    // Tıklama sayacı
+    let clickCount = 0;
+    const maxClicks = 11; // 11 tıklamadan sonra kaybolacak
+
+    // Butona tıklama eventi ekle
+    noButton.addEventListener('click', () => {
+        clickCount++;
+        if (clickCount >= maxClicks) {
+            // Butonu gizle
+            noButton.style.display = 'none';
+            // İsteğe bağlı uyarı mesajı
+            alert("Artık 'Hayır' butonu kayboldu 😉");
+        }
+    });
+}
