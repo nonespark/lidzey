@@ -1,22 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lidzey olalım mı?</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .buttons {
+            margin: 20px;
+        }
+        .yes-button, #no-button {
+            padding: 10px 20px;
+            font-size: 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .gif_container img {
+            width: 300px;
+            margin-top: 30px;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <h1>Lidzey olalım mı?</h1>
         <div class="buttons">
             <button class="yes-button" onclick="handleYesClick()">Evet</button>
-            <button class="no-button" onclick="handleNoClick()">Hayır</button>
+            <button id="no-button">Hayır</button>
         </div>
         <div class="gif_container">
             <img src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExdTZ3MzJuODRoNTlxNnFiYnJ3cTI4Zmx0ZzdkZWNnYnZ3ZDB4cGY4diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/NacQsDEkVBfgIHhlK2/giphy.gif">
         </div>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        const noButton = document.getElementById('no-button');
+        const yesButton = document.querySelector('.yes-button');
+
+        let messageIndex = 0;
+        let clickCount = 0;
+        const maxClicks = 11;
+
+        const messages = [
+            "Emin misin?",
+            "Ya ama lütfen??",
+            "Gerçekten emin misin?",
+            "Lütfen ya...",
+            "Bir daha düşün!",
+            "Ama çok üzülürüm...",
+            "Gerçekten çok üzülürüm...",
+            "Çok çok çok üzülürüm...",
+            "Tamam artık sormayacağım...",
+            "O hayır tuşuna bir daha sakın basma."
+        ];
+
+        if (noButton) {
+            noButton.addEventListener('click', () => {
+                // Mesajı değiştir
+                noButton.textContent = messages[messageIndex];
+                messageIndex = (messageIndex + 1) % messages.length;
+
+                // Evet butonunu büyüt
+                const currentSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+                yesButton.style.fontSize = `${currentSize * 1.5}px`;
+
+                // Tıklama sayacı
+                clickCount++;
+                if (clickCount >= maxClicks) {
+                    noButton.style.display = 'none';
+                }
+            });
+        }
+
+        function handleYesClick() {
+            window.location.href = "yes_page.html";
+        }
+    </script>
 </body>
 </html>
