@@ -63,7 +63,7 @@ const messages = [
     "Gerçekten çok üzülürüm...",
     "Çok çok çok üzülürüm...",
     "Tamam artık sormayacağım...",
-    "Şaka yapıyorum, lütfen evet de! ❤️"
+    "O hayır tuşuna bir daha sakın basma."
 ];
 
 let messageIndex = 0;
